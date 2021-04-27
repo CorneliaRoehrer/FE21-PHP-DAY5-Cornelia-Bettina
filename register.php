@@ -89,7 +89,7 @@ if (isset($_POST[ 'btn-signup'])) {
    // if there's no error, continue to signup
     if (!$error) {
 
-        $query = "INSERT INTO user(first_name, last_name, password, date_of_birth, email, picture)
+        $query = "INSERT INTO login(first_name, last_name, password, date_of_birth, email, picture)
                     VALUES('$fname', '$lname', '$password', '$date_of_birth', '$email', '$picture->fileName')";
         $res = mysqli_query($connect, $query);
 

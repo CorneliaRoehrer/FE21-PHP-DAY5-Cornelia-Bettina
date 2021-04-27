@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'components/db_connect.php';
-require_once 'components/file_upload.php';
+require_once 'loginUser/components/db_connect.php';
+require_once 'loginUser/components/file_upload.php';
 // if session is not set this will redirect to login page
 if( !isset($_SESSION['adm']) && !isset ($_SESSION[ 'user']) ) {
     header("Location: index.php");
@@ -21,7 +21,7 @@ if(isset($_SESSION["adm"])){
 //fetch and populate form
 if (isset($_GET[ 'id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM user WHERE id = {$id}";
+    $sql = "SELECT * FROM login WHERE id = {$id}";
     $result = $connect->query($sql);
     if ($result->num_rows == 1) {
         $data = $result->fetch_assoc();
@@ -47,9 +47,9 @@ if (isset($_POST["submit" ])) {
     $picture = $pictureArray->fileName;
     if ($pictureArray->error === 0) {      
         ($_POST[ "picture"] == "avatar.png") ?: unlink("pictures/{$_POST["picture "]}");
-        $sql = "UPDATE user SET first_name = '$f_name', last_name = '$l_name', email = '$email', date_of_birth = '$date_of_birth', picture = '$pictureArray->fileName' WHERE id = {$id}";
+        $sql = "UPDATE login SET first_name = '$f_name', last_name = '$l_name', email = '$email', date_of_birth = '$date_of_birth', picture = '$pictureArray->fileName' WHERE id = {$id}";
     } else {
-        $sql = "UPDATE user SET first_name = '$f_name', last_name = '$l_name', email = '$email', date_of_birth = '$date_of_birth' WHERE id = {$id}";
+        $sql = "UPDATE login SET first_name = '$f_name', last_name = '$l_name', email = '$email', date_of_birth = '$date_of_birth' WHERE id = {$id}";
     }
     if ($connect->query($sql) === true) {    
         $class = "alert alert-success";
@@ -74,7 +74,7 @@ $connect->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <?php require_once 'components/boot.php'?>
+    <?php require_once 'loginUser/components/boot.php'?>
     <style type= "text/css">
         fieldset {
             margin: auto;

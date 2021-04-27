@@ -14,7 +14,7 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 }
 
 // select logged-in users details - procedural style
-$res = mysqli_query($connect, "SELECT * FROM user WHERE id=" . $_SESSION['user']);
+$res = mysqli_query($connect, "SELECT * FROM login WHERE id=" . $_SESSION['user']);
 $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
 $connect->close();
@@ -26,7 +26,7 @@ $connect->close();
     <meta charset="UTF-8">
     <meta name="viewport"   content="width=device-width, initial-scale=1.0">
 <title>Welcome - <?php  echo $row['first_name']; ?></title >
-<?php require_once 'components/boot.php' ?>
+<?php require_once 'loginUser/components/boot.php' ?>
 <style>
 .userImage{
 width: 200px;

@@ -44,7 +44,7 @@ if (isset ($_POST['btn-login'])) {
 
        $password = hash('sha256', $pass); // password hashing
 
-        $sqlSelect = "SELECT id, first_name, password, status FROM user WHERE email = ? ";
+        $sqlSelect = "SELECT id, first_name, password, status FROM login WHERE email = ? ";
         $stmt = $connect->prepare($sqlSelect);
         $stmt->bind_param("s", $email);
         $work = $stmt->execute();
