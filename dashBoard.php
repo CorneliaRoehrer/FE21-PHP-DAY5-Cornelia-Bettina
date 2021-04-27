@@ -47,6 +47,7 @@ $connect->close();
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adm-DashBoard</title>
+    <a href="products/index.php">Products</a>
     <?php require_once 'components/boot.php' ?>
     <style type="text/css" >       
         .img-thumbnail{

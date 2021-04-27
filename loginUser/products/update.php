@@ -1,5 +1,17 @@
 <?php
-require_once 'actions/db_connect.php';
+require_once '../components/db_connect.php' ;
+
+session_start();
+
+if (isset($_SESSION[ 'user']) != "") {
+    header("Location: ../home.php");
+    exit;
+}
+
+if (! isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
+    header("Location: ../index.php" );
+    exit;
+}
 
 if  ($_GET['id']) {
     $id = $_GET['id'];
@@ -10,6 +22,20 @@ if  ($_GET['id']) {
         $name = $data['name'];
         $price = $data['price'];
         $picture = $data['picture'];
+        $supplier = $data['fk_supplierId'];
+
+        $resultSup = mysqli_query($connect, "SELECT * FROM supplier");
+        $supList = "";
+        if(mysqli_num_rows($resultSup) > 0){
+            while ($row = $resultSup->fetch_array(MYSQLI_ASSOC)){
+                if($row['supplierId'] == $supplier){
+                    $supList .= "<option selected value='{$row['supplierId']}'>{$row['sup_name']}</option>";  
+                }else {
+                    $supList .= "<option value='{$row['supplierId']}'>{$row['sup_name']}</option>";
+                }}                
+            }else{
+            $supList = "<li>There are no suppliers registered</li>";
+        }
     } else {
         header( "location: error.php");
     }
@@ -24,7 +50,7 @@ if  ($_GET['id']) {
 <html>
     <head>
         <title> Edit Product</title>
-        <?php require_once  'components/boot.php'?>
+        <?php require_once '../../components/boot.php' ?> 
         <style   type= "text/css">
             fieldset {
                 margin: auto;
@@ -53,6 +79,14 @@ if  ($_GET['id']) {
                     <tr>
                         <th>Picture</th>
                         <td><input class= "form-control" type="file" name= "picture" /></td>
+                    </tr>
+                    <tr>
+                        <th>Supplier</th>
+                        <td>
+                    <select class = "form-select" name = "supplier" aria-label = "Default select example" >
+                        <?php echo $supList; ?>
+                    </select>
+                    </td>
                     </tr>
                     <tr>
                         <input type= "hidden" name= "id" value= "<?php echo $data['id'] ?>" />

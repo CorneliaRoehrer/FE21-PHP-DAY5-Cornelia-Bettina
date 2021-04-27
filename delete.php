@@ -1,6 +1,18 @@
 <?php 
 session_start();
-require_once 'components/db_connect.php';
+require_once ' ../ components/db_connect.php';
+
+session_start();
+
+if (isset($_SESSION[ 'user']) != "") {
+    header("Location: ../home.php");
+    exit;
+}
+
+if (! isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
+    header("Location: ../index.php" );
+    exit;
+}
 // if session is not set this will redirect to login page
 if( !isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     header("Location: index.php");
@@ -53,7 +65,7 @@ $connect->close();
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete User</title>
-        <?php require_once 'components/boot.php' ?>
+        <?php require_once ' ../ components/boot.php'?>
     <style type= "text/css" >
         fieldset {
             margin: auto;

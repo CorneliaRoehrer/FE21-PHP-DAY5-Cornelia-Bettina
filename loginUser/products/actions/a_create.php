@@ -1,15 +1,33 @@
 <?php
-require_once 'db_connect.php';
-require_once  'file_upload.php';
+require_once '../../components/db_connect.php' ;
+require_once '../../components/file_upload.php';
+
+session_start();
+
+if (isset($_SESSION[ 'user']) != "") {
+    header("Location: ../../home.php");
+    exit;
+}
+
+if  (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
+    header("Location: ../../index.php" );
+    exit;
+}
 
 if ($_POST) {  
     $name = $_POST['name'];
     $price = $_POST['price'];
+    $supplier = $_POST['supplier'];   
     $uploadError = '';
    //this function exists in the service file upload.
-    $picture = file_upload($_FILES['picture']);  
+    $picture = file_upload($_FILES['picture'], 'product');  
 
-    $sql = "INSERT INTO products (name, price, picture) VALUES ('$name', $price, '$picture->fileName')";
+    if($supplier == 'none'){
+        //checks if the supplier is undefined and insert null in the DB
+        $sql = "INSERT INTO products (name, price, picture, fk_supplierId) VALUES ('$name', $price, '$picture->fileName', null)";
+        }else{
+        $sql = "INSERT INTO products (name, price, picture, fk_supplierId) VALUES ('$name', $price, '$picture->fileName', $supplier)";
+        }
 
     if ($connect->query($sql) === true ) {
         $class = "success";
@@ -36,7 +54,7 @@ if ($_POST) {
     <head>
         <meta  charset="UTF-8">
         <title>Update</title>
-        <?php require_once '../components/boot.php' ?>
+        <?php require_once '../../components/boot.php' ?>
     </head>
     <body>
         <div class="container">

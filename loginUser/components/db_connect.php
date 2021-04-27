@@ -3,7 +3,7 @@
 $hostname = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "crud_example";
+$dbname = "sewing_db";
 
 // create connection
 $connect = mysqli_connect($hostname, $username, $password, $dbname);

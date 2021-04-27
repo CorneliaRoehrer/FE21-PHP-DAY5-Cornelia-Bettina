@@ -1,5 +1,17 @@
 <?php 
-require_once 'actions/db_connect.php';
+session_start();
+require_once '../components/db_connect.php' ;
+
+if (isset($_SESSION['user']) != "") {
+    header("Location: ../home.php");
+    exit;
+}
+
+if (! isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
+    header("Location: ../index.php" );
+    exit;
+}
+
 $sql = "SELECT * FROM products";
 $result = mysqli_query($connect ,$sql);
 $tbody=''; //this variable will hold the body for the table
@@ -28,6 +40,7 @@ $connect->close();
         <meta charset="UTF-8">
         <meta name="viewport"  content="width=device-width, initial-scale=1.0">
         <title>PHP CRUD</title>
+       
         <?php require_once 'components/boot.php' ?>
         <style type= "text/css">
             .manageProduct {          
