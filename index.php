@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../components/db_connect.php' ;
+require_once 'loginUser/components/db_connect.php' ;
 
 // it will never let you open index(login) page if session is set
 if (isset($_SESSION[ 'user']) != "") {
@@ -75,7 +75,7 @@ $connect->close();
     <meta charset="UTF-8">
     <meta name="viewport"   content="width=device-width, initial-scale=1.0">
 <title>Login & Registration System </title>
-<?php require_once  'components/boot.php'?>
+<?php require_once 'loginUser/components/boot.php'?>
 </head>
 <body>
     <div class="container">

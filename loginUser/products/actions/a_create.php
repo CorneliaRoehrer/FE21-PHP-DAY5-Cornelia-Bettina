@@ -1,6 +1,6 @@
 <?php
-require_once '../../components/db_connect.php' ;
-require_once '../../components/file_upload.php';
+require_once 'loginUser/components/db_connect.php' ;
+require_once 'loginUser/components/file_upload.php';
 
 session_start();
 

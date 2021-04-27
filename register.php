@@ -6,8 +6,9 @@ if ( isset($_SESSION['user']) != "") {
 if (isset($_SESSION[ 'adm' ]) != "") {
    header("Location: dashboard.php"); // redirects to home.php
 }
-require_once '../../components/db_connect.php' ;
-require_once 'components/file_upload.php' ;
+require_once 'loginUser/components/db_connect.php'; 
+require_once 'loginUser/components/file_upload.php';
+
 $error = false;
 $fname = $lname = $email = $date_of_birth = $pass = $picture = '';
 $fnameError = $lnameError = $emailError = $dateError = $passError = $picError = '';
@@ -61,7 +62,7 @@ if (isset($_POST[ 'btn-signup'])) {
         $emailError = "Please enter valid email address.";
     } else {
    // checks whether the email exists or not
-        $query = "SELECT email FROM user WHERE email='$email'";
+        $query = "SELECT email FROM login WHERE email='$email'";
         $result = mysqli_query($connect, $query);
         $count = mysqli_num_rows($result);
         if ($count != 0) {
@@ -116,7 +117,7 @@ $connect->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login & Registration System</title>
-<?php require_once  'components/boot.php'?>
+<?php require_once  'loginUser/components/boot.php'?>
 </head>
 <body>
 <div class ="container">

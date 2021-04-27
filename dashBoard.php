@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'components/db_connect.php';
+require_once 'loginUser/components/db_connect.php' ;
 // if session is not set this will redirect to login page
 if (!isset($_SESSION[ 'adm' ]) && !isset($_SESSION['user'])) {
     header("Location: index.php" );

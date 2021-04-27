@@ -1,10 +1,24 @@
 <?php
-require_once 'db_connect.php';
-require_once  'file_upload.php';
+require_once 'loginUser/components/db_connect.php' ;
+require_once 'loginUser/components/file_upload.php';
+
+session_start();
+
+if (isset($_SESSION[ 'user']) != "") {
+    header("Location: ../../home.php");
+    exit;
+}
+
+if  (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
+    header("Location: ../../index.php" );
+    exit;
+}
+
 
 if ($_POST) {    
     $name = $_POST['name'];
     $price = $_POST['price'];
+    $supplier = $_POST['supplier'];
     $id = $_POST['id'];
    //variable for upload pictures errors is initialized
     $uploadError = '';
@@ -12,9 +26,9 @@ if ($_POST) {
     $picture = file_upload($_FILES['picture']);//file_upload() called  
     if ($picture->error===0){
         ($_POST["picture"]=="product.png")?: unlink("../pictures/$_POST[picture]");          
-        $sql = "UPDATE products SET name = '$name', price = $price, picture = '$picture->fileName' WHERE id = {$id}";
+        $sql = "UPDATE products SET name = '$name', price = $price, picture = '$picture->fileName', fk_supplierId = $supplier WHERE id = {$id}";
     }else{
-        $sql = "UPDATE products SET name = '$name', price = $price WHERE id = {$id}";
+        $sql = "UPDATE products SET name = '$name', price = $price, fk_supplierId = $supplier WHERE id = {$id}";
     }    
     if ($connect->query($sql) === TRUE) {
         $class = "success";
@@ -37,7 +51,7 @@ if ($_POST) {
     <head>
         <meta  charset="UTF-8">
         <title>Update</title>
-        <?php require_once '../components/boot.php' ?> 
+        <?php require_once 'loginUser/components/boot.php' ?> 
     </head>
     <body>
         <div class="container">
