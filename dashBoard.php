@@ -14,7 +14,7 @@ if ( isset($_SESSION["user"])) {
 
 $id = $_SESSION['adm' ];
 $status = 'adm';
-$sqlSelect = "SELECT * FROM user WHERE status != ? ";
+$sqlSelect = "SELECT * FROM login WHERE status != ? ";
 $stmt = $connect->prepare($sqlSelect);
 $stmt->bind_param("s", $status);
 $work = $stmt->execute();
@@ -45,10 +45,9 @@ $connect->close();
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adm-DashBoard</title>
-    <a href="products/index.php">Products</a>
-    <?php require_once 'components/boot.php' ?>
+    <?php require_once 'loginUser/components/boot.php' ?>
     <style type="text/css" >       
         .img-thumbnail{
             width: 70px !important;
@@ -75,15 +74,16 @@ $connect->close();
         <div class="col-2">
         <img class="userImage"  src="pictures/admavatar.png" alt= "Adm avatar" >
         <p class="">Administrator </p>
+        <a href="loginUser/products/index.php">Products</a>
         <a href="logout.php?logout">Sign Out </a>
         </div >
         <div class="col-8 mt-2">
-            <p class='h2' >Users</p>
+            <p class='h2'>Users</p>
         <table class='table table-striped'>
             <thead  class='table-success'>
                 <tr>
                     <th>Picture</th>
-                    <th>Name</th >
+                    <th>Name</th>
                     <th>Date of birth</th>
                     <th>Email</th>
                     <th>Action</th>

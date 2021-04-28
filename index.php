@@ -70,10 +70,10 @@ $connect->close();
 
 
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"   content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
 <title>Login & Registration System </title>
 <?php require_once 'loginUser/components/boot.php'?>
 </head>

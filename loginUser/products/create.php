@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'loginUser/components/db_connect.php' ;
+require_once '../components/db_connect.php' ;
 
 if (isset($_SESSION['user']) != "" ) {
     header("Location: ../home.php");

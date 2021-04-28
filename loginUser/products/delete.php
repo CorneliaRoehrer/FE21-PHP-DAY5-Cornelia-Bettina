@@ -1,5 +1,5 @@
 <?php 
-require_once 'loginUser/components/db_connect.php' ;
+require_once '../components/db_connect.php' ;
 
 if  ($_GET['id']) {
     $id = $_GET['id'];
@@ -26,7 +26,7 @@ if  ($_GET['id']) {
         <meta charset="UTF-8">
         <meta name="viewport"  content="width=device-width, initial-scale=1.0">
         <title>Delete Product</title>
-        <?php require_once 'components/boot.php' ?>
+        <?php require_once '../components/boot.php' ?>
         <style type= "text/css">
             fieldset {
                 margin: auto;

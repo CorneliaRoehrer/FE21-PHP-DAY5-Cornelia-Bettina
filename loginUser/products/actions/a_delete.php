@@ -1,5 +1,5 @@
 <?php 
-require_once 'loginUser/components/db_connect.php' ;
+require_once '../../components/db_connect.php';
 
 session_start();
 
@@ -38,7 +38,7 @@ if  ($_POST) {
     <head>
         <meta charset="UTF-8">
         <title>Delete</title>
-        <?php require_once '../components/boot.php' ?> 
+        <?php require_once '../../components/boot.php' ?> 
     </head>
     <body>
         <div class="container">

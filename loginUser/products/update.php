@@ -1,5 +1,5 @@
 <?php
-require_once 'loginUser/components/db_connect.php' ;
+require_once '../components/db_connect.php' ;
 
 session_start();
 
@@ -50,7 +50,7 @@ if  ($_GET['id']) {
 <html>
     <head>
         <title> Edit Product</title>
-        <?php require_once 'loginUser/components/boot.php' ?> 
+        <?php require_once '../components/boot.php' ?> 
         <style   type= "text/css">
             fieldset {
                 margin: auto;

@@ -1,6 +1,6 @@
 <?php
-require_once 'loginUser/components/db_connect.php' ;
-require_once 'loginUser/components/file_upload.php';
+require_once '../../components/db_connect.php';
+require_once '../../components/file_upload.php';
 
 session_start();
 
@@ -51,7 +51,7 @@ if ($_POST) {
     <head>
         <meta  charset="UTF-8">
         <title>Update</title>
-        <?php require_once 'loginUser/components/boot.php' ?> 
+        <?php require_once '../../components/boot.php' ?> 
     </head>
     <body>
         <div class="container">
@@ -61,9 +61,10 @@ if ($_POST) {
                 <div class="alert alert-<?php echo $class;?>" role="alert">
                 <p><?php echo ($message) ?? ''; ?></p>
                 <p><?php echo ($uploadError) ?? ''; ?></p>
-                <a href='../update.php?id=<?=$id;?>' ><button class="btn btn-warning" type='button'>Back<button></a>
+                <a href='../update.php?id=<?=$id?>'><button class="btn btn-warning" type='button'>Back</button></a>
                 <a href='../index.php'><button class="btn btn-success" type='button'>Home</button></a>
             </div>
-        </div >
+        </div>
     </body>
+    
 </html>

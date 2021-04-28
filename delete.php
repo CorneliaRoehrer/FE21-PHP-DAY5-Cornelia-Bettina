@@ -1,8 +1,7 @@
 <?php 
 session_start();
-require_once 'loginUser/components/db_connect.php' ;
+require_once 'loginUser/components/db_connect.php';
 
-session_start();
 
 if (isset($_SESSION[ 'user']) != "") {
     header("Location: ../home.php");
@@ -27,7 +26,7 @@ if(isset($_SESSION["user" ])){
     //the GET method will show the info from the user to be deleted
     if  ($_GET['id']) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM user WHERE id = {$id}";
+    $sql = "SELECT * FROM login WHERE id = {$id}";
     $result = $connect->query($sql);
     $data = $result->fetch_assoc();
     if ($result->num_rows == 1) {
@@ -43,7 +42,7 @@ if ($_POST) {
     $picture = $_POST['picture'];
     ($picture =="avatar.png")?: unlink("pictures/$picture");
 
-    $sql = "DELETE FROM user WHERE id = {$id}";
+    $sql = "DELETE FROM login WHERE id = {$id}";
     if ($connect->query($sql) === TRUE) {
     $class = "alert alert-success" ;
     $message = "Successfully Deleted!";
@@ -65,7 +64,7 @@ $connect->close();
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete User</title>
-        <?php require_once ' ../ components/boot.php'?>
+        <?php require_once 'loginUser/components/boot.php'?>
     <style type= "text/css" >
         fieldset {
             margin: auto;

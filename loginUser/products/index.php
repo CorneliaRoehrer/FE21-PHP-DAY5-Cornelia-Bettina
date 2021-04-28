@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once 'loginUser/components/db_connect.php' ;
+require_once '../components/db_connect.php';
 
 if (isset($_SESSION['user']) != "") {
     header("Location: ../home.php");
@@ -40,8 +40,8 @@ $connect->close();
         <meta charset="UTF-8">
         <meta name="viewport"  content="width=device-width, initial-scale=1.0">
         <title>PHP CRUD</title>
-       
-        <?php require_once 'components/boot.php' ?>
+
+        <?php require_once '../components/boot.php' ?>
         <style type= "text/css">
             .manageProduct {          
                 margin: auto;
@@ -79,6 +79,7 @@ $connect->close();
                     <?= $tbody;?>
                 </tbody>
             </table>
+            <a href='../../index.php'><button class="btn btn-success" type='button'>Home</button></a>
         </div>
     </body>
 </html>
