@@ -40,8 +40,8 @@ if(isset($_SESSION["user" ])){
 if ($_POST) {
     $id = $_POST['id'];
     $picture = $_POST['picture'];
-    ($picture =="avatar.png")?: unlink("pictures/$picture");
-
+    ($picture =="avatar.png")?: unlink("loginUser/pictures/$picture");
+    $picture = 'avatar.png';
     $sql = "DELETE FROM login WHERE id = {$id}";
     if ($connect->query($sql) === TRUE) {
     $class = "alert alert-success" ;
@@ -82,7 +82,7 @@ $connect->close();
         <p><?php echo ($message) ?? ''; ?></p>           
 </div>
 <fieldset>
-<legend class='h2 mb-3' >Delete request <img class= 'img-thumbnail rounded-circle'  src='pictures/<?php echo $picture ?>' alt="<?php echo $f_name ?>"></legend >
+<legend class='h2 mb-3' >Delete request <img class= 'img-thumbnail rounded-circle'  src='loginUser/pictures/<?php echo $picture ?>' alt="<?php echo $f_name ?>"></legend >
 <h5>You have selected the data below: </h5>
 <table  class="table w-75 mt-3">
         <tr>

@@ -24,7 +24,7 @@ $tbody = '';
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $tbody .= "<tr>
-            <td><img class='img-thumbnail rounded-circle' src='pictures/" . $row['picture'] . "' alt=" . $row['first_name'] . "></td>
+            <td><img class='img-thumbnail rounded-circle' src='loginUser/pictures/" . $row['picture'] . "' alt=" . $row['first_name'] . "></td>
             <td>" . $row['first_name'] . " " . $row['last_name'] . "</td>
             <td>" . $row['date_of_birth'] . "</td>
             <td>" . $row['email'] . "</td>
@@ -81,7 +81,7 @@ $connect->close();
 <body>
 <div class="container">
         <div class="admin">   
-            <img class="userImage" src="pictures/admavatar.png" alt= "Adm avatar">
+            <img class="userImage" src="loginUser/pictures/admavatar.png" alt= "Adm avatar">
             <h1>Administrator</h1>
             <div>
                 <a href="loginUser/products/index.php"><button class="btn btn-info">Products</button></a>

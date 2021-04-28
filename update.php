@@ -95,7 +95,7 @@ $connect->close();
     </div>
     
         <h2>Update</h2>       
-        <img class='img-thumbnail rounded-circle' src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>">
+        <img class='img-thumbnail rounded-circle' src='loginUser/pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>">
         <form  method="post" enctype="multipart/form-data" >
             <table  class="table">
                 <tr>

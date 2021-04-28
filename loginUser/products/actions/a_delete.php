@@ -16,7 +16,7 @@ if  (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 if  ($_POST) {
     $id = $_POST[ 'id'];
     $picture = $_POST['picture'];
-    ($picture =="product.png")?: unlink("../pictures/$picture" );
+    ($picture =="product.png")?: unlink("../../pictures/$picture" );
 
     $sql = "DELETE FROM products WHERE id = {$id}";
     if ($connect->query($sql) === TRUE) {
