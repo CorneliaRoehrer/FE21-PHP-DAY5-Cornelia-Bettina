@@ -66,17 +66,29 @@ $connect->close();
             width: 100px ;
             height: auto;
         }
+        .admin{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tableDiv{
+            display: flex;
+            justify-content: center;
+        }
     </style>
 </head>
-<body >
-<div class="container" >
-    <div class= "row">
-        <div class="col-2">
-        <img class="userImage"  src="pictures/admavatar.png" alt= "Adm avatar" >
-        <p class="">Administrator </p>
-        <a href="loginUser/products/index.php">Products</a>
-        <a href="logout.php?logout">Sign Out </a>
-        </div >
+<body>
+<div class="container">
+        <div class="admin">   
+            <img class="userImage" src="pictures/admavatar.png" alt= "Adm avatar">
+            <h1>Administrator</h1>
+            <div>
+                <a href="loginUser/products/index.php"><button class="btn btn-info">Products</button></a>
+                <a href="logout.php?logout"><button class="btn btn-primary">Sign Out</button></a>
+            </div>
+        </div>
+    <div class="row tableDiv">
         <div class="col-8 mt-2">
             <p class='h2'>Users</p>
         <table class='table table-striped'>
