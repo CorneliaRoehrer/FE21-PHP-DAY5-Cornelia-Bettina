@@ -3,6 +3,8 @@ session_start();
 require_once 'loginUser/components/db_connect.php';
 require_once 'loginUser/components/file_upload.php';
 // if session is not set this will redirect to login page
+$message = "";
+$uploadError = "";
 if( !isset($_SESSION['adm']) && !isset ($_SESSION[ 'user']) ) {
     header("Location: index.php");
     exit;
@@ -90,8 +92,8 @@ $connect->close();
 <body>
 <div class ="container">
     <div class="<?php echo $class; ?>"  role="alert">
-        <p><?php echo ($message) ?? ''; ?></p>
-        <p><?php echo ($uploadError) ?? ''; ?></p>       
+        <p><?php echo $message; ?></p>
+        <p><?php echo $uploadError; ?></p>       
     </div>
     
         <h2>Update</h2>       

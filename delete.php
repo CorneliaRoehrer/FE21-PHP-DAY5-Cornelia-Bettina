@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require_once 'loginUser/components/db_connect.php';
-
+$message = "";
 
 if (isset($_SESSION[ 'user']) != "") {
     header("Location: ../home.php");
@@ -79,7 +79,7 @@ $connect->close();
 </head>
 <body>
 <div  class="<?php echo $class; ?>" role="alert" >
-        <p><?php echo ($message) ?? ''; ?></p>           
+        <p><?php echo $message; ?></p>           
 </div>
 <fieldset>
 <legend class='h2 mb-3' >Delete request <img class= 'img-thumbnail rounded-circle'  src='loginUser/pictures/<?php echo $picture ?>' alt="<?php echo $f_name ?>"></legend >

@@ -3,6 +3,8 @@ require_once '../../components/db_connect.php';
 require_once '../../components/file_upload.php';
 
 session_start();
+$message = "";
+$uploadError = "";
 
 if (isset($_SESSION[ 'user']) != "") {
     header("Location: ../../home.php");
@@ -59,8 +61,8 @@ if ($_POST) {
                 <h1>Update request response</h1>
             </div>
                 <div class="alert alert-<?php echo $class;?>" role="alert">
-                <p><?php echo ($message) ?? ''; ?></p>
-                <p><?php echo ($uploadError) ?? ''; ?></p>
+                <p><?php echo $message?></p>
+                <p><?php echo $uploadError; ?></p>
                 <a href='../update.php?id=<?=$id?>'><button class="btn btn-warning" type='button'>Back</button></a>
                 <a href='../index.php'><button class="btn btn-success" type='button'>Home</button></a>
             </div>
