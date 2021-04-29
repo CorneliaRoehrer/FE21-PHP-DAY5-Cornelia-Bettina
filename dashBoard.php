@@ -1,4 +1,4 @@
-<!-- cha cha changes lalalalala -->
+<!-- cha cha changes -->
 
 <?php
 session_start();
