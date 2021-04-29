@@ -1,9 +1,14 @@
 <?php 
 
-$hostname = "localhost";
-$username = "koerbler_bettina";
-$password = "aPxg.GU$K;im";
-$dbname = "koerbler_sewing_db";
+// $hostname = "173.212.235.205";
+// $username = "koerbler_bettina";
+// $password = "aPxg.GU$K;im";
+// $dbname = "koerbler_sewing_db";
+
+// $hostname = "173.212.235.205";
+// $username = "roehrerc_ornelia";
+// $password = "CodeFactory2021!";
+// $dbname = "roehrerc_sewing_db";
 
 // create connection
 $connect = mysqli_connect($hostname, $username, $password, $dbname);
